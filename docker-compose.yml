@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: risk_metrics
+      POSTGRES_USER: risk_app
+      POSTGRES_PASSWORD: risk_local_only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - risk_metrics_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U risk_app -d risk_metrics"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      args:
+        PYTHON_BASE: ${MVP_PYTHON_BASE:-python:3.12-slim}
+        INSTALL_DEPS: ${MVP_INSTALL_DEPS:-true}
+    environment:
+      DATABASE_URL: postgresql+psycopg2://risk_app:risk_local_only@db:5432/risk_metrics
+      STATIC_DIR: /app/static
+      AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
+      FINAM_SECRET: ${FINAM_SECRET:-}
+    ports:
+      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:3000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  risk_metrics_pgdata:

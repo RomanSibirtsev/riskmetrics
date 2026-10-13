@@ -1,0 +1,46 @@
+{
+  "snapshot_id": "moex-iss-su26207rmfs9-2026-10-12",
+  "source": "MOEX ISS",
+  "source_url": "https://iss.moex.com/iss/engines/stock/markets/bonds/boards/TQOB/securities/SU26207RMFS9.json?iss.meta=off",
+  "instrument": {
+    "isin": "RU000A0JS3W6",
+    "secid": "SU26207RMFS9",
+    "short_name": "ОФЗ 26207",
+    "full_name": "ОФЗ-ПД 26207",
+    "market": "stock",
+    "board": "TQOB",
+    "currency": "RUB",
+    "face_value": "1000.00",
+    "coupon_type": "fixed",
+    "coupon_rate_percent": "8.15",
+    "coupon_amount": "40.64",
+    "coupon_period_days": 182,
+    "next_coupon_date": "2027-02-03",
+    "maturity_date": "2027-02-03",
+    "amortizing": false,
+    "offer_date": null
+  },
+  "quote": {
+    "trade_date": "2026-10-12",
+    "last_price_percent_of_face": "98.77",
+    "yield_percent": "12.60",
+    "duration_days": 113,
+    "system_time": "2026-10-12T21:35:01",
+    "last_trade_time": "21:18:05",
+    "last_update_time": "21:20:01"
+  },
+  "risk_parameters": {
+    "duration_mod": null,
+    "convexity": null,
+    "status": "not derived",
+    "note": "ISS field DURATION (113 days) is retained as published. It is not silently treated as modified duration. Derive DurationMod and Convexity from the full cashflow schedule and the applicable MOEX methodology before using this snapshot in risk calculations."
+  },
+  "usage": {
+    "mode": "local educational snapshot",
+    "public_product_use": "requires checking MOEX data terms and obtaining the applicable agreement",
+    "stale_after": "2026-10-12",
+    "note": "Historical quote snapshot; not a live feed or a production valuation."
+  },
+  "methodology_url": "https://www.moex.com/ru/documents/6908",
+  "observed_at": "2026-10-12T21:35:01+03:00"
+}
